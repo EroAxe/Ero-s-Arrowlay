@@ -69,6 +69,8 @@ func id_received(result, response, headers, body):
 		
 		push_error("Authentication Error Received: " + info.message)
 		
+		return
+		
 	
 	info.data = info.data[0]
 	
@@ -118,7 +120,7 @@ func heat_click():
 		
 		$Arrow.visible = true
 		
-		tween.interpolate_property(arrow, "position", start_pos, goal_pos, time)
+		tween.interpolate_property(arrow, "position", start_pos, goal_pos, time, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		
 		tween.start()
 		
