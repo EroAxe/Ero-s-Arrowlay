@@ -155,13 +155,3 @@ func toggle_arrow(thing):
 	
 	$Indicator.visible = !$Indicator.visible
 	
-	
-	if disabled:
-		
-		OS.alert("Arrow is Disabled")
-		
-	else:
-		
-		OS.alert("Arrow is Enabled")
-		
-	
