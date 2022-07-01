@@ -21,13 +21,13 @@ custom_constants/margin_left = 15
 custom_constants/margin_bottom = 60
 script = ExtResource( 3 )
 
-[node name="HBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="."]
 margin_left = 15.0
 margin_top = 15.0
 margin_right = 585.0
 margin_bottom = 240.0
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="VBox"]
 margin_right = 570.0
 margin_bottom = 143.0
 custom_fonts/font = SubResource( 1 )
@@ -35,7 +35,7 @@ text = "Arrow
 Overlay"
 align = 1
 
-[node name="Label2" type="Label" parent="HBoxContainer"]
+[node name="Label2" type="Label" parent="VBox"]
 margin_top = 147.0
 margin_right = 570.0
 margin_bottom = 178.0
@@ -43,12 +43,12 @@ custom_fonts/font = SubResource( 2 )
 text = "By EroAxee"
 align = 1
 
-[node name="Get_Auth" parent="HBoxContainer" instance=ExtResource( 1 )]
+[node name="Get_Auth" parent="VBox" instance=ExtResource( 1 )]
 margin_top = 182.0
 margin_right = 570.0
 margin_bottom = 222.0
 
-[node name="Start_Overlay" type="Button" parent="HBoxContainer"]
+[node name="Start_Overlay" type="Button" parent="VBox"]
 visible = false
 margin_top = 226.0
 margin_right = 570.0
@@ -56,4 +56,4 @@ margin_bottom = 270.0
 size_flags_vertical = 3
 text = "Start_Overlay"
 
-[connection signal="pressed" from="HBoxContainer/Start_Overlay" to="." method="start_overlay"]
+[connection signal="pressed" from="VBox/Start_Overlay" to="." method="start_overlay"]
