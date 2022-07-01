@@ -128,11 +128,12 @@ func heat_click():
 		tween.start()
 		
 		
+		yield(tween, "tween_started")
+		
 		$Arrow.visible = true
 		
 		on_cooldown = true
 		
-#	arrow.position = Vector2(info.x * OS.window_size.x, info.y * OS.window_size.y)
 	
 
 
@@ -152,5 +153,5 @@ func toggle_arrow(thing):
 	
 	disabled != disabled
 	
-	$Indicator.visible = !$Indicator.visible
+	$MarginContainer/Indicator.visible = !$MarginContainer/Indicator.visible
 	
