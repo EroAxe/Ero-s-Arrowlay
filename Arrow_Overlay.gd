@@ -123,11 +123,12 @@ func heat_click():
 		
 		print(start_pos, goal_pos, "Time ", str(time))
 		
-		$Arrow.visible = true
-		
 		tween.interpolate_property(arrow, "position", start_pos, goal_pos, time, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		
 		tween.start()
+		
+		
+		$Arrow.visible = true
 		
 		on_cooldown = true
 		
