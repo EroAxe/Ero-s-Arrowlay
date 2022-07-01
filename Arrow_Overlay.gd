@@ -147,8 +147,6 @@ func cooldown_over():
 	
 	$Arrow.visible = false
 	
-	pass
-	
 
 func toggle_arrow(thing):
 	
