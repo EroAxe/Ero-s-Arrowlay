@@ -14,6 +14,8 @@ export var start_pos = Vector2(0,0)
 
 var on_cooldown = false
 
+var disabled = false
+
 
 func _ready():
 	
@@ -39,7 +41,10 @@ func _ready():
 
 func _process(delta):
 	
-	heat_socket.poll()
+	if !disabled:
+		
+		heat_socket.poll()
+		
 	
 
 # Requests the Channel ID from Twitch
@@ -144,3 +149,19 @@ func cooldown_over():
 	pass
 	
 
+func toggle_arrow(thing):
+	
+	disabled != disabled
+	
+	$Indicator.visible = !$Indicator.visible
+	
+	
+	if disabled:
+		
+		OS.alert("Arrow is Disabled")
+		
+	else:
+		
+		OS.alert("Arrow is Enabled")
+		
+	
