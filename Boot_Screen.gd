@@ -8,9 +8,9 @@ func _ready():
 	
 	if Globals.creds.token != "This":
 		
-		$HBoxContainer/Get_Auth.visible = false
+		$VBox/Get_Auth.visible = false
 		
-		$HBoxContainer/Start_Overlay.visible = true
+		$VBox/Start_Overlay.visible = true
 		
 	
 
