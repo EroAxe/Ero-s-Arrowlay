@@ -47,6 +47,15 @@ func _process(delta):
 		
 	
 
+# Handles reconnecting to heat when needed on a timer
+func reconnect():
+	
+	if !heat_socket.is_connected():
+		
+		connect_to_heat()
+		
+	
+
 # Requests the Channel ID from Twitch
 func request_id():
 	

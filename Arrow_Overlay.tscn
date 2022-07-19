@@ -39,6 +39,9 @@ expand = true
 wait_time = 0.3
 one_shot = true
 
+[node name="Reconnect" type="Timer" parent="."]
+wait_time = 120.0
+
 [node name="Hider" type="Timer" parent="."]
 one_shot = true
 
@@ -119,6 +122,7 @@ text = "Arrow Enabled"
 
 [connection signal="tween_completed" from="Tween" to="." method="start_cooldown"]
 [connection signal="timeout" from="Cooldown" to="." method="cooldown_over"]
+[connection signal="timeout" from="Reconnect" to="." method="reconnect"]
 [connection signal="timeout" from="Hider" to="Arrow" method="set_visible" binds= [ false ]]
 [connection signal="value_changed" from="Popup_Layer/MarginContainer/Settings/VBoxContainer/HBoxContainer/Cooldown_Set" to="Cooldown" method="set_wait_time"]
 [connection signal="value_changed" from="Popup_Layer/MarginContainer/Settings/VBoxContainer/HBoxContainer2/Visible_Set" to="Hider" method="set_wait_time"]
