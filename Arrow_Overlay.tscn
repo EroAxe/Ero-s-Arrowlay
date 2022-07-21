@@ -41,6 +41,7 @@ one_shot = true
 
 [node name="Reconnect" type="Timer" parent="."]
 wait_time = 120.0
+autostart = true
 
 [node name="Hider" type="Timer" parent="."]
 one_shot = true
