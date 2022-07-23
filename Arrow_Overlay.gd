@@ -38,6 +38,8 @@ func _ready():
 	
 	heat_socket.connect("connection_established", self, "connected")
 	
+	heat_socket.connect("connection_closed", self, "socket_closed")
+	
 
 func _process(delta):
 	
@@ -148,10 +150,14 @@ func heat_click():
 
 func start_cooldown(object, key):
 	
+	print("Started Arrow Cooldown")
+	
 	$Cooldown.start()
 	
 
 func cooldown_over():
+	
+	print("Arrow cooldown over")
 	
 	on_cooldown = false
 	
@@ -162,5 +168,15 @@ func toggle_arrow(thing):
 	
 	disabled != disabled
 	
+	print("Arrow Toggled : " + str(disabled))
+	
+	
 	$MarginContainer/Indicator.visible = !$MarginContainer/Indicator.visible
+	
+
+func socket_closed(was_clean):
+	
+	print("Heat_Socket Disconnected")
+	
+	connect_to_heat()
 	
