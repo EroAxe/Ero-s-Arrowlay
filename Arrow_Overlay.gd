@@ -52,7 +52,7 @@ func _process(delta):
 # Handles reconnecting to heat when needed on a timer
 func reconnect():
 	
-	if !heat_socket.is_connected():
+	if !heat_socket.get_peer(1).is_connected_to_host():
 		
 		connect_to_heat()
 		
