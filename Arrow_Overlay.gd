@@ -9,6 +9,8 @@ onready var arrow : Sprite = $Arrow
 
 onready var tween : Tween = $Tween
 
+onready var http : HTTPRequest = $HTTPRequest
+
 export var start_pos = Vector2(0,0)
 
 
@@ -124,6 +126,8 @@ func heat_click():
 		return
 		
 	
+	$Hider.stop()
+	
 	var window_size = OS.window_size
 	
 	var goal_pos = Vector2(float(info.x) * window_size.x, float(info.y) * window_size.y)
@@ -138,10 +142,9 @@ func heat_click():
 		
 		tween.start()
 		
+		#arrow.visible = true
 		
 		yield(tween, "tween_started")
-		
-		$Arrow.visible = true
 		
 		on_cooldown = true
 		
@@ -168,7 +171,7 @@ func toggle_arrow(thing):
 	
 	disabled != disabled
 	
-	print("Arrow Toggled : " + str(disabled))
+	print("Arrow Toggled : " + str(disabled) + " - " + str(OS.get_system_time_secs()))
 	
 	
 	$MarginContainer/Indicator.visible = !$MarginContainer/Indicator.visible
@@ -176,7 +179,17 @@ func toggle_arrow(thing):
 
 func socket_closed(was_clean):
 	
-	print("Heat_Socket Disconnected")
+	print("Heat_Socket Disconnected" + " - " + str(OS.get_system_time_secs()))
 	
 	connect_to_heat()
 	
+
+
+func move_offscreen():
+	
+	arrow.position = Vector2(-20, 0)
+	
+	print("Arrow Hidden" + str(OS.get_system_time_secs()))
+	
+
+
