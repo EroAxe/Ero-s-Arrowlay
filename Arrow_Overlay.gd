@@ -42,6 +42,11 @@ func _ready():
 	
 	heat_socket.connect("connection_closed", self, "socket_closed")
 	
+#	TODO: Auto boot the AutoHotkey Script
+	var ahk_script = OS.get_executable_path().get_base_dir().plus_file("Overlay Toggle.ahk")
+
+	OS.shell_open(ahk_script)
+	
 
 func _process(delta):
 	
@@ -138,6 +143,8 @@ func heat_click():
 		
 		print(start_pos, goal_pos, "Time ", str(time))
 		
+		get_username(info.id)
+		
 		tween.interpolate_property(arrow, "position", start_pos, goal_pos, time, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		
 		tween.start()
@@ -150,21 +157,47 @@ func heat_click():
 		
 	
 
+func get_username(id):
+	
+	http.request("https://api.twitch.tv/helix/users?id=" + id, [
+		
+		"Authorization: Bearer " + Globals.creds.token,
+		"Client-Id: " + Globals.client_id
+		
+	])
+	
+
+func check_http(result, response_code, headers, body):
+	
+	var info = body.get_string_from_utf8()
+	
+	info = parse_json(info)
+	
+	var data = info.data[0]
+	
+	print(data)
+	
+	$Arrow/Label.text = data.display_name
+	
+
+""" HELPER FUNCTIONS """
 
 func start_cooldown(object, key):
 	
-	print("Started Arrow Cooldown")
+	print("Started Arrow Cooldown" + " - " + str(OS.get_system_time_secs()))
 	
 	$Cooldown.start()
+	
+	$Hider.start()
 	
 
 func cooldown_over():
 	
-	print("Arrow cooldown over")
+	print("Arrow cooldown over" + " - " + str(OS.get_system_time_secs()))
 	
 	on_cooldown = false
 	
-	$Arrow.visible = false
+	#arrow.visible = false
 	
 
 func toggle_arrow(thing):
