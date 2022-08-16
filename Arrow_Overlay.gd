@@ -173,9 +173,18 @@ func check_http(result, response_code, headers, body):
 	
 	info = parse_json(info)
 	
+	if info.has("error"):
+		
+		$Arrow/Label.text = ""
+		
+		push_error("Received Bad Request on get_username.  Someone may not have authorized Heat.")
+		
+		return
+		
+	
 	var data = info.data[0]
 	
-	print(data)
+	print(data.display_name)
 	
 	$Arrow/Label.text = data.display_name
 	
@@ -223,6 +232,8 @@ func move_offscreen():
 	arrow.position = Vector2(-20, 0)
 	
 	print("Arrow Hidden" + str(OS.get_system_time_secs()))
+	
+	$Arrow/Label.text = ""
 	
 
 
