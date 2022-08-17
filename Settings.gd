@@ -9,7 +9,7 @@ func _unhandled_key_input(event):
 	
 	if event.is_action_released("toggle_arrow"):
 		
-		overlay.toggle_arrow(false)
+		overlay.toggle_arrow()
 		
 	
 
