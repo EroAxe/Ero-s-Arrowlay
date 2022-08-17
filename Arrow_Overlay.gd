@@ -131,7 +131,7 @@ func heat_click():
 		
 		print(info.message)
 		
-		push_error(info.message)
+		push_error("Heat System Message: " + info.message)
 		
 		return
 		
