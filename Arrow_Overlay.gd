@@ -143,30 +143,36 @@ func heat_click():
 	var goal_pos = Vector2(float(info.x) * window_size.x, float(info.y) * window_size.y)
 	
 #	Checks that the arrow isn't on cooldown.  And hasn't been toggled off
-	if !on_cooldown and toggled:
+	if on_cooldown or !toggled:
 		
-		var time = start_pos.distance_to(goal_pos) /600
+		print("Arrow on Cooldown or toggled off")
 		
-		print(start_pos, goal_pos, "Time ", str(time))
+		return
 		
-		get_username(info.id)
-		
-		
+	
+	
+	var time = start_pos.distance_to(goal_pos) /600
+	
+	print(start_pos, goal_pos, "Time ", str(time))
+	
+	get_username(info.id)
+	
+	
 #		Restart Reconnect Timer
-		$Reconnect.start()
-		
-		
+	$Reconnect.start()
+	
+	
 #		Started Tween
-		tween.interpolate_property(arrow, "position", start_pos, goal_pos, time, Tween.TRANS_LINEAR, Tween.EASE_IN)
-		
-		tween.start()
-		
-		
+	tween.interpolate_property(arrow, "position", start_pos, goal_pos, time, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	
+	tween.start()
+	
+	
 #		Starts cooldown
-		yield(tween, "tween_started")
-		
-		on_cooldown = true
-		
+	yield(tween, "tween_started")
+	
+	on_cooldown = true
+	
 	
 
 func get_username(id):
