@@ -3,7 +3,7 @@ extends MarginContainer
 
 var heat_socket = WebSocketClient.new()
 
-var channel_id
+var channel_id = 144606537
 
 onready var arrow : Sprite = $Arrow
 
@@ -16,7 +16,7 @@ export var start_pos = Vector2(0,0)
 
 var on_cooldown = false
 
-var disabled = false
+var toggled = true
 
 
 func _ready():
@@ -50,7 +50,7 @@ func _ready():
 
 func _process(delta):
 	
-	if !disabled:
+	if toggled:
 		
 		heat_socket.poll()
 		
@@ -90,7 +90,7 @@ func id_received(result, response, headers, body):
 	
 	info.data = info.data[0]
 	
-	channel_id = info.data.id
+#	channel_id = info.data.id
 	
 	
 	connect_to_heat()
@@ -142,7 +142,8 @@ func heat_click():
 	
 	var goal_pos = Vector2(float(info.x) * window_size.x, float(info.y) * window_size.y)
 	
-	if !on_cooldown:
+#	Checks that the arrow isn't on cooldown.  And hasn't been toggled off
+	if !on_cooldown and toggled:
 		
 		var time = start_pos.distance_to(goal_pos) /600
 		
@@ -220,11 +221,12 @@ func cooldown_over():
 	#arrow.visible = false
 	
 
-func toggle_arrow(thing):
+func toggle_arrow():
 	
-	disabled != disabled
+	toggled = !toggled
 	
-	print("Arrow Toggled : " + str(disabled) + " - " + Time.get_time_string_from_system())
+	
+	print("Arrow Toggled : " + str(toggled) + " - " + Time.get_time_string_from_system())
 	
 	
 	$MarginContainer/Indicator.visible = !$MarginContainer/Indicator.visible
