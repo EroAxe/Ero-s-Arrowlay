@@ -56,14 +56,7 @@ func _process(delta):
 		
 	
 
-# Handles reconnecting to heat when needed on a timer
-func reconnect():
-	
-	if !heat_socket.get_peer(1).is_connected_to_host():
-		
-		connect_to_heat()
-		
-	
+
 
 # Requests the Channel ID from Twitch
 func request_id():
@@ -103,6 +96,16 @@ func id_received(result, response, headers, body):
 	connect_to_heat()
 	
 
+
+# Handles reconnecting to heat when needed on a timer
+func reconnect():
+	
+	heat_socket.disconnect_from_host(1000, "Reconnecting")
+	
+	connect_to_heat()
+	
+
+
 # Connects to the Heat Extension on a specific channel
 func connect_to_heat():
 	
@@ -128,6 +131,8 @@ func heat_click():
 		
 		print(info.message)
 		
+		push_error(info.message)
+		
 		return
 		
 	
@@ -145,12 +150,18 @@ func heat_click():
 		
 		get_username(info.id)
 		
+		
+#		Restart Reconnect Timer
+		$Reconnect.start()
+		
+		
+#		Started Tween
 		tween.interpolate_property(arrow, "position", start_pos, goal_pos, time, Tween.TRANS_LINEAR, Tween.EASE_IN)
 		
 		tween.start()
 		
-		#arrow.visible = true
 		
+#		Starts cooldown
 		yield(tween, "tween_started")
 		
 		on_cooldown = true
@@ -193,7 +204,7 @@ func check_http(result, response_code, headers, body):
 
 func start_cooldown(object, key):
 	
-	print("Started Arrow Cooldown" + " - " + str(OS.get_system_time_secs()))
+	print("Started Arrow Cooldown" + " - " + Time.get_time_string_from_system())
 	
 	$Cooldown.start()
 	
@@ -202,7 +213,7 @@ func start_cooldown(object, key):
 
 func cooldown_over():
 	
-	print("Arrow cooldown over" + " - " + str(OS.get_system_time_secs()))
+	print("Arrow cooldown over" + " - " + Time.get_time_string_from_system())
 	
 	on_cooldown = false
 	
@@ -213,7 +224,7 @@ func toggle_arrow(thing):
 	
 	disabled != disabled
 	
-	print("Arrow Toggled : " + str(disabled) + " - " + str(OS.get_system_time_secs()))
+	print("Arrow Toggled : " + str(disabled) + " - " + Time.get_time_string_from_system())
 	
 	
 	$MarginContainer/Indicator.visible = !$MarginContainer/Indicator.visible
@@ -221,7 +232,7 @@ func toggle_arrow(thing):
 
 func socket_closed(was_clean):
 	
-	print("Heat_Socket Disconnected" + " - " + str(OS.get_system_time_secs()))
+	print("Heat_Socket Disconnected" + " - " + Time.get_time_string_from_system())
 	
 	connect_to_heat()
 	
@@ -231,7 +242,7 @@ func move_offscreen():
 	
 	arrow.position = Vector2(-20, 0)
 	
-	print("Arrow Hidden" + str(OS.get_system_time_secs()))
+	print("Arrow Hidden" + Time.get_time_string_from_system())
 	
 	$Arrow/Label.text = ""
 	
