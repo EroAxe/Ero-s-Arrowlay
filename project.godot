@@ -22,7 +22,6 @@ _global_script_class_icons={
 
 config/name="Arrow Overlay"
 run/main_scene="res://Boot_Screen.tscn"
-config/icon="res://Assets/icon.png"
 
 [autoload]
 
