@@ -7,9 +7,9 @@ onready var overlay = get_node(overlay_path)
 
 func _unhandled_key_input(event):
 	
-	if event.is_action("toggle_arrow"):
+	if event.is_action_released("toggle_arrow"):
 		
-		overlay.toggle_arrow()
+		overlay.toggle_arrow(false)
 		
 	
 
