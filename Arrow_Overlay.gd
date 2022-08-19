@@ -3,7 +3,7 @@ extends MarginContainer
 
 var heat_socket = WebSocketClient.new()
 
-var channel_id = 144606537
+var channel_id 
 
 onready var arrow : Sprite = $Arrow
 
@@ -90,7 +90,7 @@ func id_received(result, response, headers, body):
 	
 	info.data = info.data[0]
 	
-#	channel_id = info.data.id
+	channel_id = info.data.id
 	
 	
 	connect_to_heat()
