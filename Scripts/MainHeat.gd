@@ -14,7 +14,7 @@ var mock_data = """{
 	"y": "%s"
 }"""
 
-var settings: Settings
+var settings : Settings
 
 ## Structure:
 ## {name: [arrow_inst]}
@@ -31,11 +31,15 @@ func _ready() -> void:
 	fullscreen_window()
 	
 
+# Fullscreens the window as much as possible.
 func fullscreen_window():
 	
-	pass
+	OS.window_size = OS.get_screen_size() - Vector2(1,1)
+	
+	OS.window_position = Vector2(0,0)
 	
 
+# Used for debugging based off mouse clicks to emulate Heat packets
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		var mouse_pos = get_viewport().get_mouse_position()
@@ -45,7 +49,7 @@ func _input(event: InputEvent) -> void:
 		print(float(ndd.y) * OS.get_window_size().y)
 		handle_heat_string(nd)
 
-
+# Handles heat information and moves arrows based off given info.
 func handle_heat_string(data: String):
 	var dict = parse_json(data)
 	
@@ -83,7 +87,7 @@ func handle_heat_string(data: String):
 func id_to_name(id: String) -> String:
 	return id
 
-
+# Adds a new arrow instance to the scene and to the arrows dictionary under the specified username.
 func add_arrow(username: String) -> Node:
 	var new_arrow = arrow_scene.instance()
 	add_child(new_arrow)
