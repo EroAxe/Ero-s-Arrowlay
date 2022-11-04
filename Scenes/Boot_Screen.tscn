@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Scenes/Get_Auth.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scenes/Auth_Popup.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scripts/Boot_Screen.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Inputs/Get_Auth.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Dialogs/Auth_Popup.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Scripts/Boot_Screen.gd" type="Script" id=3]
 [ext_resource path="res://Assets/CROWNT.TTF" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
