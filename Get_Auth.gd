@@ -1,8 +1,5 @@
 extends Button
 
-""" SIGNALS """
-
-signal got_username()
 
 
 """ CONNECTOR VARIABLES """
@@ -35,21 +32,6 @@ func _process(delta):
 	if auth_requested and server.is_connection_available():
 		
 		check_server()
-		
-	
-
-func request_username(token):
-	
-	var http = HTTPRequest.new()
-	
-	http.connect("request_completed", self, "check_http")
-	
-	
-	requesting = "username"
-	
-	
-	http.request("https://api.twitch.tv/helix/users?", 
-			["Authorization: Bearer " + Globals.creds.token, "Client-Id: " + Globals.client_id])
 		
 	
 
@@ -106,24 +88,6 @@ func check_server():
 		
 		
 		get_tree().change_scene("res://Arrow_Overlay.tscn")
-		
-	
-
-func check_http(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray):
-	
-	var info = body.get_string_from_utf8()
-	
-	info = parse_json(info)
-	
-	info = info.data[0]
-	
-	
-	match requesting:
-		
-		"username":
-			
-			var username = info.display_name
-			
 		
 	
 

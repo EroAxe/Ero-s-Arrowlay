@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Arrow_Overlay.gd" type="Script" id=1]
 [ext_resource path="res://Assets/Fal Arrow.png" type="Texture" id=2]
 [ext_resource path="res://Settings.gd" type="Script" id=3]
+[ext_resource path="res://Oxanium-Bold.ttf" type="DynamicFontData" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 41
+font_data = ExtResource( 4 )
 
 [node name="Arrow_Overlay" type="MarginContainer"]
 anchor_right = 1.0
@@ -12,11 +17,20 @@ script = ExtResource( 1 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Arrow" type="Sprite" parent="."]
-visible = false
-position = Vector2( 95, 134 )
+position = Vector2( -16, 3 )
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 offset = Vector2( -110.821, 120.928 )
+
+[node name="Label" type="Label" parent="Arrow"]
+margin_left = -312.0
+margin_top = 204.0
+margin_right = 94.0
+margin_bottom = 274.0
+custom_fonts/font = SubResource( 1 )
+text = "Name Here"
+align = 1
+valign = 1
 
 [node name="MarginContainer" type="Control" parent="."]
 margin_right = 600.0
@@ -41,9 +55,12 @@ one_shot = true
 
 [node name="Reconnect" type="Timer" parent="."]
 wait_time = 120.0
+autostart = true
 
 [node name="Hider" type="Timer" parent="."]
 one_shot = true
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
 
 [node name="Popup_Layer" type="CanvasLayer" parent="."]
 
@@ -123,7 +140,8 @@ text = "Arrow Enabled"
 [connection signal="tween_completed" from="Tween" to="." method="start_cooldown"]
 [connection signal="timeout" from="Cooldown" to="." method="cooldown_over"]
 [connection signal="timeout" from="Reconnect" to="." method="reconnect"]
-[connection signal="timeout" from="Hider" to="Arrow" method="set_visible" binds= [ false ]]
+[connection signal="timeout" from="Hider" to="." method="move_offscreen"]
+[connection signal="request_completed" from="HTTPRequest" to="." method="check_http"]
 [connection signal="value_changed" from="Popup_Layer/MarginContainer/Settings/VBoxContainer/HBoxContainer/Cooldown_Set" to="Cooldown" method="set_wait_time"]
 [connection signal="value_changed" from="Popup_Layer/MarginContainer/Settings/VBoxContainer/HBoxContainer2/Visible_Set" to="Hider" method="set_wait_time"]
 [connection signal="toggled" from="Popup_Layer/MarginContainer/Settings/VBoxContainer/CheckBox" to="." method="toggle_arrow"]
