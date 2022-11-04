@@ -20,11 +20,11 @@ func pressed():
 	
 	OS.shell_open("https://id.twitch.tv/oauth2/authorize?" +
 			"response_type=token&client_id=" + Globals.client_id + 
-			"&redirect_uri=http://localhost&scope=chat%3Aread chat%3Aedit&state=" + state)
+			"&redirect_uri=http://localhost:1338&scope=chat%3Aread chat%3Aedit&state=" + state)
 	
 	auth_requested = true
 	
-	server.listen(80)
+	server.listen(1338)
 	
 
 func _process(delta):

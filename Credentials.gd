@@ -7,7 +7,7 @@ export var token = "This"
 
 
 func save(token):
-	
+	print("A: ", token)
 	self.token = token
 	
 	

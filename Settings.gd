@@ -1,22 +1,11 @@
-extends WindowDialog
-
-export var overlay_path : NodePath
-
-onready var overlay = get_node(overlay_path)
+extends Resource
+class_name Settings
 
 
-func _unhandled_key_input(event):
-	
-	if event.is_action_released("toggle_arrow"):
-		
-		overlay.toggle_arrow()
-		
-	
+export var max_total_arrows: int = 5
+export var max_arrows_per_user: int = 1
+export var arrow_speed: float = 600.0
+export var arrow_hold_time: float = 1.0
+export var arrow_show_name: bool = true
 
-func _input(event):
-	
-	if event.is_action("settings"):
-		
-		popup()
-		
-	
+export var arrow_texture_path: String

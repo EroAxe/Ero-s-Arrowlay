@@ -13,15 +13,20 @@ _global_script_classes=[ {
 "class": "Creds",
 "language": "GDScript",
 "path": "res://Credentials.gd"
+}, {
+"base": "Resource",
+"class": "Settings",
+"language": "GDScript",
+"path": "res://Settings.gd"
 } ]
 _global_script_class_icons={
-"Creds": ""
+"Creds": "",
+"Settings": ""
 }
 
 [application]
 
 config/name="Arrow Overlay"
-run/main_scene="res://Boot_Screen.tscn"
 config/use_custom_user_dir=true
 config/icon="res://Assets/Arrow Icon.png"
 
