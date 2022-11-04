@@ -18,8 +18,6 @@ func _ready():
 		
 		emit_signal("token_loaded")
 		
-#	creds.save("y2j39ogaal5p6ylj7aajod4ezpftsx")
-		
 	
 
 
