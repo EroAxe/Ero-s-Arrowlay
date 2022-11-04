@@ -1,10 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Scenes/Get_Auth.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Scripts/Auth_Popup.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Inputs/Get_Auth.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Dialogs/Scripts/Auth_Popup.gd" type="Script" id=2]
 
 [node name="Auth_Popup" type="WindowDialog"]
-visible = true
 margin_right = 300.0
 margin_bottom = 159.0
 rect_min_size = Vector2( 300, 160 )
