@@ -15,16 +15,18 @@ var requesting
 var state = Globals.make_state()
 
 
+signal got_token
+
 
 func pressed():
 	
 	OS.shell_open("https://id.twitch.tv/oauth2/authorize?" +
 			"response_type=token&client_id=" + Globals.client_id + 
-			"&redirect_uri=http://localhost:1338&scope=chat%3Aread chat%3Aedit&state=" + state)
+			"&redirect_uri=http://localhost&scope=chat%3Aread &state=" + state)
 	
 	auth_requested = true
 	
-	server.listen(1338)
+	server.listen(80)
 	
 
 func _process(delta):
@@ -86,8 +88,7 @@ func check_server():
 #		Stops the server listening
 		server.stop()
 		
-		
-		get_tree().change_scene("res://Arrow_Overlay.tscn")
+		emit_signal("got_token")
 		
 	
 
