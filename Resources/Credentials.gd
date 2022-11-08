@@ -8,9 +8,9 @@ export var token = "This"
 const creds_path = "user://creds.tres"
 
 func save(token):
-	print("A: ", token)
-	self.token = token
 	
+#	print("A: ", token)
+	self.token = token
 	
 	ResourceSaver.save(creds_path, self)
 	
