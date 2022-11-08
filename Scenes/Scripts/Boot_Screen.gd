@@ -19,3 +19,16 @@ func start_overlay():
 	
 	get_tree().change_scene("res://Scenes/Overlay_Main.tscn")
 	
+
+func set_manual_token(token : String):
+	
+	Globals.creds.token = token
+	
+	Globals.creds.save()
+	
+
+
+func set_manual_port(port):
+	
+	Globals.settings.authentication_port = int(port)
+	
