@@ -11,3 +11,19 @@ export var arrow_overlap_radius : float = 25.0
 
 export var arrow_texture_path: String
 
+export var authentication_port : int = 80
+
+export var channel_id : int
+
+
+func set_setting(whatever : String, val):
+	
+	set(whatever, val)
+	
+
+func save():
+	
+	ResourceSaver.save("user://settings.res", self)
+	
+
+
