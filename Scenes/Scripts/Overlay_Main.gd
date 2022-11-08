@@ -1,6 +1,6 @@
 extends Node2D
 
-const SETTINGS_PATH := "user://settings.tres"
+
 
 export var max_total_arrows: int = 5
 export var max_arrows_per_user: int = 1
@@ -22,11 +22,8 @@ var arrows: Dictionary
 
 
 func _ready() -> void:
-	if ResourceLoader.exists(SETTINGS_PATH):
-		settings = ResourceLoader.load(SETTINGS_PATH)
-	else:
-		settings = Settings.new()
-		ResourceSaver.save(SETTINGS_PATH, settings)
+	
+	settings = Globals.settings
 	
 	fullscreen_window()
 	
