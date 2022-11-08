@@ -40,7 +40,7 @@ func fullscreen_window():
 
 # Used for debugging based off mouse clicks to emulate Heat packets
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
+	if event is InputEventMouseButton and event.pressed and Engine.editor_hint:
 		var mouse_pos = get_viewport().get_mouse_position()
 		var nd = mock_data % [randi() % 128, mouse_pos.x / OS.get_window_size().x, mouse_pos.y / OS.get_window_size().y]
 		var ndd = parse_json(nd)
