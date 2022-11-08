@@ -37,7 +37,9 @@ func http_check_complete(result: int, response_code: int, headers: PoolStringArr
 	var info = parse_json(body.get_string_from_utf8())
 	
 #	Checks that the result was correct and that the correct info was supplied to ensure that the token is valid and avoid twitch weirdness
-	if result == 200 and info.has("scopes") and info.has("login"):
+	if response_code == 200 and info.has("scopes") and info.has("login"):
+		
+		print("Valid Token Received")
 		
 		emit_signal("token_valid")
 		
