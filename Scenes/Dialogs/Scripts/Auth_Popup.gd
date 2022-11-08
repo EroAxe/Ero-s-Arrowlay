@@ -18,6 +18,8 @@ func _ready():
 # Connected to Get_Auths got_token function.  Assumes it has a valid token 
 func got_valid_token():
 	
+	check_token()
+	
 	get_tree().paused = false
 	hide()
 	
