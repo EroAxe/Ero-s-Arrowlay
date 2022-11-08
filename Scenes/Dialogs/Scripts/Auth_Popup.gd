@@ -10,6 +10,10 @@ func _ready():
 	
 	http.connect("request_completed", self, "http_check_complete")
 	
+	$"%Token_Popup_Input".connect("text_changed", self, "set_manual_popup_token")
+	
+	$"%Port_Popup_Input".connect("text_changed", self, "set_manual_popup_port")
+	
 
 # Connected to Get_Auths got_token function.  Assumes it has a valid token 
 func got_valid_token():
@@ -49,4 +53,16 @@ func http_check_complete(result: int, response_code: int, headers: PoolStringArr
 	get_tree().paused = true
 	
 	popup()
+	
+
+func set_manual_popup_token(token : String):
+	
+	Globals.creds.token = token
+	
+	Globals.creds.save()
+	
+
+func set_manual_popup_port(port):
+	
+	Globals.settings.authentication_port = port
 	

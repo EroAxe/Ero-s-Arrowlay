@@ -36,13 +36,30 @@ text = "Your authentication has expired.  Please Re-authenticate.
 align = 1
 autowrap = true
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 margin_top = 69.0
 margin_right = 280.0
 margin_bottom = 93.0
+size_flags_horizontal = 3
+
+[node name="Token_Popup_Input" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_right = 138.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
 align = 1
 secret = true
-placeholder_text = "Manual Token Inpuut"
+placeholder_text = "Token Input"
+
+[node name="Port_Popup_Input" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+margin_left = 142.0
+margin_right = 280.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+align = 1
+secret = true
+placeholder_text = "Port Input"
 
 [node name="Get_Auth" parent="MarginContainer/VBoxContainer" instance=ExtResource( 1 )]
 margin_top = 97.0
