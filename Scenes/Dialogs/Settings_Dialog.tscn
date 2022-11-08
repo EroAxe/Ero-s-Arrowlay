@@ -3,8 +3,9 @@
 [ext_resource path="res://Scenes/Dialogs/Scripts/Settings_Dialog.gd" type="Script" id=1]
 
 [node name="Settings_Dialog" type="WindowDialog"]
+visible = true
 margin_right = 260.0
-margin_bottom = 175.0
+margin_bottom = 208.0
 rect_min_size = Vector2( 260, 180 )
 window_title = "Change Settings"
 script = ExtResource( 1 )
@@ -23,7 +24,7 @@ custom_constants/margin_bottom = 10
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 250.0
-margin_bottom = 174.0
+margin_bottom = 198.0
 
 [node name="Max_Arrows" type="SpinBox" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -74,8 +75,9 @@ margin_bottom = 164.0
 text = "Show Name on Arrow"
 
 [node name="Arrow_Path_Opener" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_right = 12.0
-margin_bottom = 20.0
+margin_top = 168.0
+margin_right = 240.0
+margin_bottom = 188.0
 
 [node name="Arrow_Path" type="FileDialog" parent="MarginContainer/VBoxContainer/Arrow_Path_Opener"]
 unique_name_in_owner = true
