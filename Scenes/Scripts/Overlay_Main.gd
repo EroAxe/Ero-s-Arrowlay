@@ -33,10 +33,9 @@ func _ready() -> void:
 
 func _process(delta):
 	
-	if heat_socket.is_connected:
-		
-		heat_socket.poll()
-		
+#	print("poll")
+	
+	heat_socket.poll()
 	
 
 
