@@ -2,7 +2,7 @@ extends WebSocketClient
 class_name Heat_Socket
 
 # Used to hold the URL for heat that we pass the Channel ID to listen through
-var heat_url := "wss://heat-api.j38.net/"
+var heat_url := "wss://heat-api.j38.net/channel/"
 
 signal heat_data(info)
 
