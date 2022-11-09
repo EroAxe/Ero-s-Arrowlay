@@ -76,10 +76,8 @@ func channel_id_received(result: int, response_code: int, headers: PoolStringArr
 	
 	print(info)
 	
-	Globals.settings.channel_id = info.data.id
 	
-	
-	heat_socket.connect_to_heat()
+	heat_socket.connect_to_heat(info.data[0].id)
 	
 	http.queue_free()
 	
@@ -90,6 +88,9 @@ func handle_heat_string(data: String):
 	var dict = parse_json(data)
 	
 	if dict.type == "system":
+		
+		print(dict)
+		
 		return
 	
 	if arrows.size() >= Globals.settings.max_total_arrows:
