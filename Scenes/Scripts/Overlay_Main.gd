@@ -14,8 +14,6 @@ var mock_data = """{
 	"y": "%s"
 }"""
 
-var settings : Settings
-
 ## Structure:
 ## {name: [arrow_inst]}
 var arrows: Dictionary
@@ -24,8 +22,6 @@ var heat_socket := Heat_Socket.new()
 
 
 func _ready() -> void:
-	
-	settings = Globals.settings
 	
 	fullscreen_window()
 	
