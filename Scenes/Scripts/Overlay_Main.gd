@@ -27,15 +27,9 @@ func _ready() -> void:
 	
 	heat_socket.connect("heat_data", self, "handle_heat_string")
 	
-	heat_socket.connect_to_heat()
+	request_channel_id()
 	
-#	if Globals.settings.channel_id == null:
-#
-#		request_channel_id()
-#
-#		return
-#
-#
+
 
 func _process(delta):
 	

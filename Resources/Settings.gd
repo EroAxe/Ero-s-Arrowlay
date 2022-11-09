@@ -13,8 +13,6 @@ export var arrow_texture_path: String
 
 export var authentication_port : int = 80
 
-export var channel_id : int
-
 
 func set_setting(whatever : String, val):
 	
