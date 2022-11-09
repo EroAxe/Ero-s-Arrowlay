@@ -67,7 +67,7 @@ func request_channel_id():
 	
 	http.request("https://api.twitch.tv/helix/users", ["Authorization: Bearer " + Globals.creds.token, "Client-Id: " + Globals.client_id])
 	
-	http.connect("request_completed", self, "channel_id_received", [self])
+	http.connect("request_completed", self, "channel_id_received", [http])
 	
 
 
