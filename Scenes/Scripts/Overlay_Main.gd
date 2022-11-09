@@ -99,7 +99,7 @@ func handle_heat_string(data: String):
 	if dict.type == "system":
 		return
 	
-	if arrows.size() >= settings.max_total_arrows:
+	if arrows.size() >= Globals.settings.max_total_arrows:
 		return
 	
 	var screen_coords: Vector2
@@ -114,7 +114,7 @@ func handle_heat_string(data: String):
 		cur_arrow = add_arrow(username)
 		arrows[username] = [cur_arrow]
 	else:
-		if arrows[username].size() < settings.max_arrows_per_user:
+		if arrows[username].size() < Globals.settings.max_arrows_per_user:
 			cur_arrow = add_arrow(username)
 			arrows[username].append(cur_arrow)
 		else:
@@ -130,7 +130,7 @@ func handle_heat_string(data: String):
 # Updates settings from the Settings_Dialogs signals with new values
 func update_setting(val, setting : String):
 	
-	settings.set(setting, val)
+	Globals.settings.set(setting, val)
 	
 
 
@@ -148,11 +148,11 @@ func add_arrow(username: String) -> Node:
 	
 	add_child(new_arrow)
 	
-	new_arrow.set_speed(settings.arrow_speed)
-	new_arrow.set_hold_time(settings.arrow_hold_time)
-	new_arrow.set_name_visibility(settings.arrow_show_name)
-	new_arrow.set_texture_from_path(settings.arrow_texture_path)
-	new_arrow.set_overlap_radius(settings.arrow_overlap_radius)
+	new_arrow.set_speed(Globals.settings.arrow_speed)
+	new_arrow.set_hold_time(Globals.settings.arrow_hold_time)
+	new_arrow.set_name_visibility(Globals.settings.arrow_show_name)
+	new_arrow.set_texture_from_path(Globals.settings.arrow_texture_path)
+	new_arrow.set_overlap_radius(Globals.settings.arrow_overlap_radius)
 	
 	new_arrow.connect("about_to_delete", self, "remove_arrow")
 	new_arrow.connect("overlapped_arrow", self, "remove_arrow")
