@@ -1,11 +1,18 @@
 extends WebSocketClient
 class_name Heat_Socket
 
+
 # Used to hold the URL for heat that we pass the Channel ID to listen through
 var heat_url := "wss://heat-api.j38.net/channel/"
 
+var is_connected := false
+
 signal heat_data(info)
 
+func _ready():
+	
+	verify_ssl = false
+	
 
 func connect_to_heat():
 	
@@ -15,7 +22,15 @@ func connect_to_heat():
 	
 	connect("data_received", self, "socket_received_data")
 	
+	connect("connection_established", self, "socket_connected")
+	
 
+func socket_connected(proto):
+	
+	print("Heat Socket Connected")
+	
+	is_connected = true
+	
 
 func socket_received_data():
 	
