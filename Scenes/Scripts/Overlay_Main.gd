@@ -29,6 +29,18 @@ func _ready() -> void:
 	
 	fullscreen_window()
 	
+	heat_socket.connect("heat_data", self, "handle_heat_string")
+	
+	heat_socket.connect_to_heat()
+	
+#	if Globals.settings.channel_id == null:
+#
+#		request_channel_id()
+#
+#		return
+#
+#
+
 func _process(delta):
 	
 	heat_socket.poll()
@@ -53,6 +65,32 @@ func _input(event: InputEvent) -> void:
 		print(float(ndd.x) * OS.get_window_size().x)
 		print(float(ndd.y) * OS.get_window_size().y)
 		handle_heat_string(nd)
+
+func request_channel_id():
+	
+	var http = HTTPRequest.new()
+	
+	add_child(http)
+	
+	http.request("https://api.twitch.tv/helix/users", ["Authorization: Bearer " + Globals.creds.token, "Client-Id: " + Globals.client_id])
+	
+	http.connect("request_completed", self, "channel_id_received", [self])
+	
+
+
+func channel_id_received(result: int, response_code: int, headers: PoolStringArray, body: PoolByteArray, http):
+	
+	var info = parse_json(body.get_string_from_utf8())
+	
+	print(info)
+	
+	Globals.settings.channel_id = info.data.id
+	
+	
+	heat_socket.connect_to_heat()
+	
+	http.queue_free()
+	
 
 
 # Handles heat information and moves arrows based off given info.
