@@ -29,7 +29,7 @@ func _input(event):
 	
 	if event.is_action("settings"):
 		
-		popup()
+		popup(Rect2(get_global_mouse_position(), rect_size))
 		
 	
 
