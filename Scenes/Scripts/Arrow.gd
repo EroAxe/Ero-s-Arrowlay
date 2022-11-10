@@ -12,6 +12,8 @@ signal about_to_delete(name, arrow)
 signal overlapped_arrow(node)
 
 
+var id
+
 func _ready():
 	
 	$"%Overlap".connect("area_entered", self, "overlapped_arrow")
@@ -20,13 +22,38 @@ func _ready():
 func set_name(n: String):
 	name_label.text = n
 
+# Requests the twitch username based off of the given ID
+func request_username(id):
+	
+	self.id = id
+	
+	var http = HTTPRequest.new()
+	
+	add_child(http)
+	
+	http.request("https://api.twitch.tv/helix/users?id=" + str(id), ["Authorization: Bearer " + Globals.creds.token, "Client-Id:" + Globals.client_id])
+	
+	http.connect("request_completed", self, "name_request_received", [http])
+	
+
+# Connected to the HTTPRequest node used for 
+func name_request_received(result, response_code, headers: PoolStringArray, body: PoolByteArray, http):
+	
+	var info = parse_json(body.get_string_from_utf8()).data[0]
+	
+	set_name(info.display_name)
+	
+#	Removes the unneeded HTTPRequest
+	http.queue_free()
+	
+
 
 func move_to(to: Vector2):
 	var t = create_tween()
 	t.tween_property(self, "position", to, Vector2.ZERO.distance_to(to) / speed)
 	t.tween_callback(self, "emit_signal", ["done_moving"])
 	t.tween_interval(hold_on_screen)
-	t.tween_callback(self, "emit_signal", ["about_to_delete", name_label.text, self])
+	t.tween_callback(self, "emit_signal", ["about_to_delete", id, self])
 	t.tween_callback(self, "queue_free")
 
 

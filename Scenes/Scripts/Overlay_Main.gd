@@ -100,38 +100,25 @@ func handle_heat_string(data: String):
 	screen_coords.x = float(dict.x) * OS.get_window_size().x
 	screen_coords.y = float(dict.y) * OS.get_window_size().y
 	
-	var username = id_to_name(dict.id)
+	print(dict.id)
+	print(Globals.settings.max_arrows_per_user)
 	
 	var cur_arrow
 	
-	if !arrows.has(username):
-		cur_arrow = add_arrow(username)
-		arrows[username] = [cur_arrow]
+	if !arrows.has(dict.id):
+		cur_arrow = add_arrow(dict.id)
+		arrows[dict.id] = [cur_arrow]
 	else:
-		if arrows[username].size() < Globals.settings.max_arrows_per_user:
-			cur_arrow = add_arrow(username)
-			arrows[username].append(cur_arrow)
+		if arrows[dict.id].size() < Globals.settings.max_arrows_per_user:
+			cur_arrow = add_arrow(dict.id)
+			arrows[dict.id].append(cur_arrow)
 		else:
 			return
+			
 	
-	
-	cur_arrow.set_name(username) # Change this to do lookup of ID to get name
+	cur_arrow.request_username(dict.id) # Change this to do lookup of ID to get name
 	
 	cur_arrow.move_to(screen_coords)
-	
-
-
-# Updates settings from the Settings_Dialogs signals with new values
-func update_setting(val, setting : String):
-	
-	Globals.settings.set(setting, val)
-	
-
-
-# This is where you would make your Twitch channel ID to Username function, but for now it just returns the id.
-func id_to_name(id: String) -> String:
-	
-	return id
 	
 
 
