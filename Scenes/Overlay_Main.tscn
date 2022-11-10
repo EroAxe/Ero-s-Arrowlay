@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Scripts/Overlay_Main.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Dialogs/Settings_Dialog.tscn" type="PackedScene" id=2]
 
-[node name="MainHeat" type="Node2D"]
+[node name="Overlay_Main" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="Settings_Dialog" parent="." instance=ExtResource( 2 )]
