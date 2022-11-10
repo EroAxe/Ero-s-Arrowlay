@@ -5,13 +5,14 @@ var crypto = Crypto.new()
 
 export var token = "This"
 
+const creds_path = "user://creds.tres"
 
 func save(token):
 	
+#	print("A: ", token)
 	self.token = token
 	
-	
-	ResourceSaver.save("user://creds.res", self)
+	ResourceSaver.save(creds_path, self)
 	
 
 
@@ -19,9 +20,9 @@ func load_token():
 	
 	var file = File.new()
 	
-	if file.file_exists("user://creds.res"):
+	if file.file_exists(creds_path):
 		
-		var cred = ResourceLoader.load("user://creds.res") 
+		var cred = ResourceLoader.load(creds_path) 
 		
 		token = cred.token
 		

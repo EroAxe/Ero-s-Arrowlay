@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Inputs/Scripts/Quick_Auth.gd" type="Script" id=1]
+
+[node name="Quick_Auth" type="Button"]
+margin_right = 12.0
+margin_bottom = 20.0
+text = "Quick Authenticate"
+script = ExtResource( 1 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
