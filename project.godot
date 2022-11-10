@@ -36,6 +36,7 @@ config/name="Arrow Overlay"
 run/main_scene="res://Scenes/Boot_Screen.tscn"
 config/use_custom_user_dir=true
 config/icon="res://Assets/Arrow Icon.png"
+config/windows_native_icon="res://Assets/Arrow-Icon.ico"
 
 [autoload]
 
@@ -75,6 +76,10 @@ toggle_clickthrough={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":true,"meta":false,"command":true,"pressed":false,"scancode":0,"physical_scancode":84,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[logging]
+
+file_logging/enable_file_logging=true
 
 [physics]
 
