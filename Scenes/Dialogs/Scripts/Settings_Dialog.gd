@@ -38,3 +38,9 @@ func update_setting(val, setting : String):
 	
 	Globals.settings.set(setting, val)
 	
+
+
+func open_path_dialog():
+	
+	$"%Arrow_Path".popup(Rect2(get_global_mouse_position(), $"%Arrow_Path".rect_size))
+	

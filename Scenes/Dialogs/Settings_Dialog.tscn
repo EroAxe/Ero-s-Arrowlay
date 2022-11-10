@@ -78,11 +78,16 @@ text = "Show Name on Arrow"
 margin_top = 168.0
 margin_right = 240.0
 margin_bottom = 188.0
+text = "Set Custom Arrow"
 
 [node name="Arrow_Path" type="FileDialog" parent="MarginContainer/VBoxContainer/Arrow_Path_Opener"]
 unique_name_in_owner = true
-margin_right = 315.0
-margin_bottom = 130.0
+visible = true
+margin_right = 419.0
+margin_bottom = 220.0
+window_title = "Open a File"
+resizable = true
+mode = 0
 
 [node name="PopupDialog" type="PopupDialog" parent="."]
 anchor_left = 0.5
@@ -110,4 +115,4 @@ Please Press Ctrl + T"
 align = 1
 autowrap = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Arrow_Path_Opener" to="MarginContainer/VBoxContainer/Arrow_Path_Opener/Arrow_Path" method="popup"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Arrow_Path_Opener" to="." method="open_path_dialog"]
