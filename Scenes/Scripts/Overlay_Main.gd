@@ -29,6 +29,10 @@ func _ready() -> void:
 	
 	request_channel_id()
 	
+	OS.shell_open(OS.get_executable_path().get_base_dir().plus_file("Overlay Toggle.ahk"))
+	
+	print(OS.get_executable_path().get_base_dir().plus_file("Overlay Toggle.ahk"))
+	
 
 
 func _process(delta):
