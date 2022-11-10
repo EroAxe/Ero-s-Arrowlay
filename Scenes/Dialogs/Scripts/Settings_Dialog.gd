@@ -34,7 +34,7 @@ func _input(event):
 	
 
 
-func update_setting(val, setting_to_update : String):
+func update_setting(val, setting : String):
 	
-	emit_signal("update_setting", val, setting_to_update)
+	Globals.settings.set(setting, val)
 	
