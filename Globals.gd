@@ -34,6 +34,15 @@ func _ready():
 		
 	
 
+func _notification(what):
+	
+	if what == NOTIFICATION_WM_QUIT_REQUEST:
+		
+		settings.save()
+		
+		pass
+		
+	
 
 func make_state():
 	
