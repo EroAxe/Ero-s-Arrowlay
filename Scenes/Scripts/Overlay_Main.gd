@@ -42,6 +42,10 @@ func _process(delta):
 	heat_socket.poll()
 	
 
+func heat_reconnect_timer_ended():
+	
+	heat_socket.connect_to_heat(heat_socket.reconnect_id)
+	
 
 # Fullscreens the window as much as possible.
 func fullscreen_window():
@@ -96,6 +100,8 @@ func handle_heat_string(data: String):
 		print(dict)
 		
 		return
+	
+	$Reconnect_Timer.start()
 	
 	if arrows.size() >= Globals.settings.max_total_arrows:
 		return
