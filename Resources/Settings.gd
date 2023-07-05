@@ -8,6 +8,8 @@ export var arrow_speed : float = 600.0
 export var arrow_hold_time : float = 1.0
 export var arrow_show_name : bool = true
 export var arrow_overlap_radius : float = 25.0
+export var arrow_x_offset := 0.0
+export var arrow_y_offset := 0.0
 
 export var arrow_texture_path: String
 
