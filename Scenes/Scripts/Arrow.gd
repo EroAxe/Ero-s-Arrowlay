@@ -39,9 +39,23 @@ func request_username(id):
 # Connected to the HTTPRequest node used for 
 func name_request_received(result, response_code, headers: PoolStringArray, body: PoolByteArray, http):
 	
-	var info = parse_json(body.get_string_from_utf8()).data[0]
+	var info = parse_json(body.get_string_from_utf8())
 	
-	set_name(info.display_name)
+	if info.empty() or info.has("error"):
+		
+		set_name("Anon")
+		
+		return
+		
+	
+	info = info.data
+	
+	if info.empty():
+		
+		return
+		
+	
+	set_name(info[0].display_name)
 	
 #	Removes the unneeded HTTPRequest
 	http.queue_free()
