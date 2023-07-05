@@ -23,7 +23,7 @@ func set_setting(whatever : String, val):
 
 func save():
 	
-	ResourceSaver.save("user://settings.res", self)
+	ResourceSaver.save("user://settings.tres", self)
 	
 
 
