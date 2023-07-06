@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Scripts/Offset_Dialog.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.14902, 0.172549, 0.231373, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.168627, 0.207843, 0.286275, 1 )
+
+[node name="Offset_Dialog" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 2 )
+
+[node name="Panel_Box" type="PanelContainer" parent="."]
+margin_right = 134.0
+margin_bottom = 165.0
+rect_rotation = -0.0600512
+custom_styles/panel = SubResource( 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel_Box"]
+margin_right = 134.0
+margin_bottom = 165.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+
+[node name="Control" type="Panel" parent="Panel_Box/MarginContainer"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 129.0
+margin_bottom = 160.0
+rect_min_size = Vector2( 122.101, 0 )
+size_flags_horizontal = 5
+size_flags_vertical = 5
+custom_styles/panel = SubResource( 2 )
+
+[node name="Click_Indicator" type="ColorRect" parent="Panel_Box/MarginContainer/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -6.0
+margin_bottom = 6.0
+color = Color( 1, 0.447059, 0, 1 )
+
+[node name="Arrow_Node" type="TextureRect" parent="Panel_Box/MarginContainer/Control"]
+unique_name_in_owner = true
+margin_right = 40.0
+margin_bottom = 40.0
