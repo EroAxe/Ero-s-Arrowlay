@@ -1,7 +1,7 @@
 extends Node2D
 
 
-onready var name_label: Label = $NameLabel
+onready var name_label: Label = $"%NameLabel"
 onready var arrow_sprite: Sprite = $Arrow
 
 export var speed: float = 600.0
@@ -64,6 +64,7 @@ func name_request_received(result, response_code, headers: PoolStringArray, body
 
 func move_to(to: Vector2):
 	var t = create_tween()
+	to += Vector2(Globals.settings.arrow_x_offset, Globals.settings.arrow_y_offset)
 	t.tween_property(self, "position", to, Vector2.ZERO.distance_to(to) / speed)
 	t.tween_callback(self, "emit_signal", ["done_moving"])
 	t.tween_interval(hold_on_screen)
@@ -105,5 +106,5 @@ func set_texture_from_path(p: String):
 
 func overlapped_arrow(arrow_collider : Area):
 	
-	emit_signal("overlapped_arrow", self)
+	emit_signal("overlapped_arrow", self.name_label.text, self)
 	
