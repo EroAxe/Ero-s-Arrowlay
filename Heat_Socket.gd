@@ -9,6 +9,7 @@ var reconnect_id
 
 signal heat_data(info)
 
+
 func connect_to_heat(channel_id):
 	
 	reconnect_id = channel_id
@@ -17,17 +18,25 @@ func connect_to_heat(channel_id):
 	
 	connect("connection_established", self, "socket_connected")
 	
-	connect("connection_closed", self, "reconnect_to_heat")
+	connect("connection_closed", self, "socket_disconnected")
 	
-	print(heat_url + str(channel_id))
+	print_debug(Time.get_datetime_string_from_system(), ":Connecting:", heat_url + str(channel_id))
 	
 	connect_to_url(heat_url + str(channel_id))
 	
 
+
+func connect_with_id(id):
+	
+	connect_to_url(heat_url + str(id))
+	
+
+
 func socket_connected(proto):
 	
-	print("Heat Socket Connected")
+	print(Time.get_datetime_string_from_system(), " : Heat Socket Connected")
 	
+
 
 func socket_received_data():
 	
@@ -36,7 +45,11 @@ func socket_received_data():
 	emit_signal("heat_data", info)
 	
 
-func reconnect_to_heat(was_clean):
+
+func socket_disconnected(was_clean):
 	
-	connect_to_heat(reconnect_id)
+	print(Time.get_datetime_string_from_system(), " : Heat Socket Disconnected")
+	
+	
+	connect_with_id(reconnect_id)
 	

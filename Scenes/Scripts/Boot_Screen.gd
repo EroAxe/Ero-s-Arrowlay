@@ -32,3 +32,7 @@ func set_manual_port(port):
 	
 	Globals.settings.authentication_port = int(port)
 	
+
+func set_manual_channelid(id):
+	
+	Globals.manual_channelid = id

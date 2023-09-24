@@ -9,8 +9,12 @@ script = ExtResource( 1 )
 [node name="Settings_Dialog" parent="." instance=ExtResource( 2 )]
 
 [node name="Reconnect_Timer" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 10.0
 autostart = true
+
+[node name="Reload_Timer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
 
 [connection signal="update_setting" from="Settings_Dialog" to="." method="update_setting"]
 [connection signal="timeout" from="Reconnect_Timer" to="." method="heat_reconnect_timer_ended"]

@@ -10,7 +10,9 @@ var creds = Creds.new()
 
 var crypto = Crypto.new()
 
-var client_id = "7482xhww2zwe4xkvafq9t89ouucs70"
+var client_id = "pwe20frjig8obe0qk61gt5o8loxwp8"
+
+var manual_channelid := ""
 
 var settings : Settings = Settings.new()
 

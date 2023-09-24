@@ -26,5 +26,3 @@ func save():
 	
 	ResourceSaver.save("user://settings.tres", self)
 	
-
-

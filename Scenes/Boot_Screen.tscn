@@ -60,15 +60,16 @@ custom_fonts/font = SubResource( 2 )
 text = "By EroAxee"
 align = 1
 
-[node name="Auth_Tweaks" type="HBoxContainer" parent="VBox"]
+[node name="Auth_Tweaks" type="HFlowContainer" parent="VBox"]
 margin_top = 192.0
 margin_right = 670.0
 margin_bottom = 216.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Token_Input" type="LineEdit" parent="VBox/Auth_Tweaks"]
 unique_name_in_owner = true
-margin_right = 333.0
+margin_right = 220.0
 margin_bottom = 24.0
 hint_tooltip = "A manual input for your token in case automatic authentication doesn't work."
 size_flags_horizontal = 3
@@ -78,13 +79,22 @@ placeholder_text = "Manual Token Input"
 
 [node name="Port_Input" type="LineEdit" parent="VBox/Auth_Tweaks"]
 unique_name_in_owner = true
-margin_left = 337.0
-margin_right = 670.0
+margin_left = 224.0
+margin_right = 444.0
 margin_bottom = 24.0
 hint_tooltip = "Port for authentication to be received over.  Defaults to 80 for Windows.  1338 is a good option for Linux and MacOS is currently untested."
 size_flags_horizontal = 3
 align = 1
 placeholder_text = "Authentication Port Input"
+
+[node name="Channel_Input" type="LineEdit" parent="VBox/Auth_Tweaks"]
+unique_name_in_owner = true
+margin_left = 448.0
+margin_right = 668.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+align = 1
+placeholder_text = "Channel ID Input"
 
 [node name="Get_Auth" parent="VBox" instance=ExtResource( 1 )]
 unique_name_in_owner = true
@@ -118,6 +128,7 @@ margin_bottom = 345.0
 
 [connection signal="text_changed" from="VBox/Auth_Tweaks/Token_Input" to="." method="set_manual_token"]
 [connection signal="text_changed" from="VBox/Auth_Tweaks/Port_Input" to="." method="set_manual_port"]
+[connection signal="text_changed" from="VBox/Auth_Tweaks/Channel_Input" to="." method="set_manual_channelid"]
 [connection signal="got_token" from="VBox/Get_Auth" to="Control/Auth_Popup" method="check_token"]
 [connection signal="pressed" from="VBox/Start_Overlay" to="Control/Auth_Popup" method="check_token"]
 [connection signal="token_valid" from="Control/Auth_Popup" to="." method="start_overlay"]
