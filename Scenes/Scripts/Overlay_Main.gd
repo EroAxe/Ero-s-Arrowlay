@@ -27,7 +27,7 @@ func _ready() -> void:
 	
 	start_heat()
 	
-	OS.shell_open(OS.get_executable_path().get_base_dir().plus_file("Overlay Toggle.ahk"))
+	OS.shell_open(OS.get_executable_path().get_base_dir().plus_file("Arrowlay Toggle.exe"))
 	
 	print_debug(OS.get_executable_path().get_base_dir().plus_file("Overlay Toggle.ahk"))
 	
