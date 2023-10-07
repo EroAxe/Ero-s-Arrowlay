@@ -60,10 +60,10 @@ func _input(event):
 
 func update_setting(val, setting : String):
 	
-	if "offset" in setting:
-		
-		emit_signal("update_setting", setting, val)
-		
+#	if "offset" in setting:
+#
+#		emit_signal("update_setting", setting, val)
+#
 	
 	Globals.settings.set(setting, val)
 	
