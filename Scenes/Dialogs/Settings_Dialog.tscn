@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://Scenes/Dialogs/Scripts/Settings_Dialog.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Offset_Dialog.tscn" type="PackedScene" id=2]
 
 [node name="Settings_Dialog" type="WindowDialog"]
 margin_right = 248.0
@@ -144,16 +143,5 @@ allow_greater = true
 allow_lesser = true
 prefix = "Arrow Y Offset:"
 
-[node name="Offset_Window" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 272.0
-margin_right = 198.0
-margin_bottom = 292.0
-text = "Offset Window"
-
-[node name="Offset_Dialog" parent="MarginContainer/VBoxContainer/Offset_Window" instance=ExtResource( 2 )]
-
 [connection signal="popup_hide" from="." to="." method="save_settings_on_close"]
-[connection signal="popup_hide" from="." to="MarginContainer/VBoxContainer/Offset_Window/Offset_Dialog" method="set_visible" binds= [ false ]]
-[connection signal="update_offset" from="." to="MarginContainer/VBoxContainer/Offset_Window/Offset_Dialog" method="update_offset"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Arrow_Path_Opener" to="." method="open_path_dialog"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Offset_Window" to="MarginContainer/VBoxContainer/Offset_Window/Offset_Dialog" method="open_offset_dialog"]

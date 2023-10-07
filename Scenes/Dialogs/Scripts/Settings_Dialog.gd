@@ -62,7 +62,7 @@ func update_setting(val, setting : String):
 	
 	if "offset" in setting:
 		
-		emit_signal("updat", setting, val)
+		emit_signal("update_setting", setting, val)
 		
 	
 	Globals.settings.set(setting, val)
